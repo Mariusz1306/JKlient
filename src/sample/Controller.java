@@ -7,40 +7,39 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Controller {
-    @FXML private ListView listListView;
+    @FXML private ListView filesListView;
     @FXML private Button sendButton;
     @FXML private ComboBox listOfUsers;
     @FXML private Label currentActionLabel;
     private static String path;
-    private static File[] listOfFiles;
+    private static ArrayList<String> listOfFiles = new ArrayList<>();
 
     @FXML
     public  void initialize(){
         currentActionLabel.setText("test");
         listOfUsers.getItems().addAll("TEST1", "TEST2", "TEST3");
         getListOfFiles();
-        listListView.getItems().addAll(listOfFiles);
+        filesListView.getItems().addAll(listOfFiles);
     }
 
     @FXML
     public void onSendButtonClicked(){
+        System.out.println(filesListView.getSelectionModel().getSelectedItems());
         String selectedUser = listOfUsers.getValue().toString();
         currentActionLabel.setText(selectedUser);
     }
 
     public void getListOfFiles(){
-        File folder = new File("C:/");
-        listOfFiles = folder.listFiles();
+        File folder = new File("C:\\Users\\Marius\\Desktop\\Justii");
+        File[] listofFilesAndDirectoried = folder.listFiles();
 
-        for (int i = 0; i < listOfFiles.length; i++) {
-            if (listOfFiles[i].isFile()) {
-                System.out.println("File " + listOfFiles[i].getName());
-            } else if (listOfFiles[i].isDirectory()) {
-                System.out.println("Directory " + listOfFiles[i].getName());
-            }
-        }
+        for (int i = 0; i < listofFilesAndDirectoried.length; i++)
+            if (listofFilesAndDirectoried[i].isFile())
+                listOfFiles.add(listofFilesAndDirectoried[i].getName());
     }
 
     public static String getPath() {

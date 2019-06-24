@@ -24,7 +24,7 @@
             <Label fx:id="currentActionLabel" text="Label" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
-            <ListView fx:id="listListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="filesListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </center>
          <top>
             <SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" minHeight="25.0" prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
